@@ -24,7 +24,7 @@
             v-model="form.mobile"
         ></b-form-input>
         <label for="issue-type">Issue Type</label>
-        <b-form-select id="issue-type" class="form-select-lg mt-1" v-model="form.issue"
+        <b-form-select id="issue-type" v-model="form.issue"
                        :options="issues"></b-form-select>
         <label for="issue-text">Issue Type</label>
         <b-form-textarea
@@ -34,6 +34,7 @@
             class="mt-1"
         >
         </b-form-textarea>
+        <b-button @click="submit" class="bg-primary mt-3">Submit</b-button>
       </b-form>
     </b-card>
   </div>

@@ -33,6 +33,6 @@ export default class MainPage extends Vue {
         {value:'other',text:'other'}
     ]
     submit(){
-        alert(this.form.firstName)
+        alert(Object.values(this.form))
     }
 }
