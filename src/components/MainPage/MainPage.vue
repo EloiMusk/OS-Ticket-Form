@@ -1,6 +1,6 @@
 <template>
   <div id="MainPage">
-    <b-card class="m-5">
+    <b-card class="m-5 w-auto">
       <h1>Shopbase Support</h1>
       <b-form class="row m-2" @submit="submit">
         <label for="firstName">Firstname</label>
@@ -26,12 +26,13 @@
         <label for="issue-type">Issue Type</label>
         <b-form-select id="issue-type" v-model="form.issue"
                        :options="issues"></b-form-select>
-        <label for="issue-text">Issue Type</label>
+        <label for="issue-text">Issue</label>
         <b-form-textarea
             id="issue-text"
             v-model="form.issueText"
             rows="3"
             class="mt-1"
+            placeholder="Describe your issue..."
         >
         </b-form-textarea>
         <b-button @click="submit" class="bg-primary mt-3">Submit</b-button>
