@@ -1,7 +1,10 @@
 <template>
   <div id="MainPage">
     <b-card class="m-5 w-auto">
-      <h1>Shopbase Support</h1>
+      <div class="flex-row" style="display: flex; justify-content: space-between">
+        <h1>Shopbase Support</h1>
+        <img src="../../assets/logo.png" style="max-width: 200px" alt="">
+      </div>
       <b-form class="row m-2" @submit="submit">
         <label for="firstName">Firstname</label>
         <b-form-input
