@@ -74,21 +74,43 @@ export default class MainPage extends Vue {
         };
 
         fetch("http://192.168.1.164:8080/http://192.168.1.164/api/http.php/tickets.json", requestOptions)
-            .then(response => response.text())
-            .then(res =>
-                this.$bvModal.msgBoxOk('Data was submitted successfully',
-                    {
-                        title: 'Confirmation',
-                        size: 'sm',
-                        buttonSize: 'sm',
-                        okVariant: 'success',
-                        headerClass: 'p-2 border-bottom-0',
-                        footerClass: 'p-2 border-top-0',
-                        centered: true
-                    }).then(value => {
-                    console.log(value)
-                }).catch(err => {
-                    console.log('error', err)
-                })).catch(error => console.log('error', error));
+            .then(response => {
+                if (!response.ok) {
+                    this.$bvModal.msgBoxOk('Something went wrong. Make sure you filled out everything correctly or try again later.',
+                        {
+                            title: 'Error',
+                            size: 'sm',
+                            buttonSize: 'sm',
+                            okVariant: 'danger',
+                            headerClass: 'p-2 border-bottom-0',
+                            footerClass: 'p-2 border-top-0',
+                            centered: true
+                        }).then(value => {
+                        console.log(value)
+                    })
+                } else {
+                    this.$bvModal.msgBoxOk('Data was submitted successfully',
+                        {
+                            title: 'Confirmation',
+                            size: 'sm',
+                            buttonSize: 'sm',
+                            okVariant: 'success',
+                            headerClass: 'p-2 border-bottom-0',
+                            footerClass: 'p-2 border-top-0',
+                            centered: true
+                        }).then(value => {
+                        console.log(value)
+                    })
+                    response.text()
+                }
+
+            })
+            .then(res => res
+            ).catch(err => {
+            console.log('error', err)
+        })
+            .catch(error => {
+                console.log('error', error)
+            })
     }
 }
